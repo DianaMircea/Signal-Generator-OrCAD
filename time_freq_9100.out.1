@@ -1,0 +1,88 @@
+
+**** 06/02/21 18:03:13 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-time_freq_9100"  [ d:\cad\signal_generator-pspicefiles\schematic1\time_freq_9100.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "time_freq_9100.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+* From [PSPICE NETLIST] section of D:\Cadence\Cadence\cdssetup\OrCAD_PSpice\17.2.0\PSpice.ini file:
+.lib "nom.lib" 
+
+*Analysis directives: 
+.TRAN  0 2ms 0 
+.STEP LIN PARAM c 5n 20n 1n 
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source SIGNAL_GENERATOR
+.EXTERNAL OUTPUT +VCC
+.EXTERNAL OUTPUT -VCC
+R_R8         N40270 TRIUNGHI R_R8 4k TC=0,0 
+.model        R_R8 RES R=1 DEV=0.1% TC1=0 TC2=0
+C_C4         N38297 TRIUNGHI C_C4 {c} IC=0 TC=0,0 
+.model        C_C4 CAP C=1 DEV=10% TC1=0 TC2=0 VC1=0 VC2=0
+R_R3         0 N55615 R_R3 4k TC=0,0 
+.model        R_R3 RES R=1 DEV=0.1% TC1=0 TC2=0
+R_R2         DREPT N55611 R_R2 7.68k TC=0,0 
+.model        R_R2 RES R=1 DEV=0.1% TC1=0 TC2=0
+R_R14         N38457 N38297 R_R14 10.2k TC=0,0 
+.model        R_R14 RES R=1 DEV=0.1% TC1=0 TC2=0
+X_R17         N38771 N38457 DREPT POT PARAMS: SET={k} VALUE=50k
+X_U9         N38467 N38297 +VCC -VCC TRIUNGHI LTC1151/LT
+V_V1         +VCC 0 15V
+X_R4         N55611 N55619 N55615 POT PARAMS: SET={set} VALUE=3k
+R_R18         0 N38771 R_R18 24k TC=0,0 
+.model        R_R18 RES R=1 DEV=1% TC1=0 TC2=0
+X_U6         N40270 N38507 +VCC -VCC DREPT LTC1151/LT
+R_LOAD         0 OUT R_LOAD 10  TC=0,0 
+.model        R_LOAD RES R=1 DEV=0.1% TC1=0 TC2=0
+V_V2         -VCC 0 -15V
+R_R7         DREPT N40270 R_R7 15k TC=0,0 
+.model        R_R7 RES R=1 DEV=5% TC1=0 TC2=0
+R_R15         0 N38507 R_R15 3k TC=0,0 
+.model        R_R15 RES R=1 DEV=10% TC1=0 TC2=0
+R_R16         0 N38467 R_R16 10.2k TC=0,0 
+.model        R_R16 RES R=1 DEV=0.1% TC1=0 TC2=0
+D_D6         N54424 N54538 D1N4448_1 
+Q_Q22         N54538 N54534 OUT Q2SA1241 
+R_Rp2         +VCC N54306 R_Rp2 500 TC=0,0 
+.model        R_Rp2 RES R=1 DEV=5% TC1=0 TC2=0
+Q_Q20         N54306 N54330 OUT Q2SC3076 
+R_Rp3         N54538 -VCC R_Rp3 500 TC=0,0 
+.model        R_Rp3 RES R=1 DEV=5% TC1=0 TC2=0
+Q_Q19         -VCC N54538 N54534 Q2SA1241 
+D_D5         N54306 N54424 D1N4448_1 
+Q_Q21         +VCC N54306 N54330 Q2SC3076 
+R_Rp         OUT N54534 R_Rp 1 TC=0,0 
+.model        R_Rp RES R=1 DEV=1% TC1=0 TC2=0
+R_Rp1         N54330 OUT R_Rp1 1 TC=0,0 
+.model        R_Rp1 RES R=1 DEV=1% TC1=0 TC2=0
+X_U17         TRIUNGHI N54218 Sw_tOpen PARAMS: tOpen=0 ttran=1u Rclosed=0.01
++  Ropen=1Meg
+X_U18         N55619 N54218 Sw_tOpen PARAMS: tOpen=1 ttran=1u Rclosed=0.01
++  Ropen=1Meg
+X_U19         N54218 OUT +VCC -VCC N54424 uA741
+.PARAM  open_d=1 open_t=0 k=0.5 c= set=0
+-----------------------------------$
+ERROR(ORPSIM-16152): Invalid number: Error while converting token 'set' to double value. Token can be a constant or expression
+
+**** RESUMING time_freq_9100.cir ****
+.END
+
